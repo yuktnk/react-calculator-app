@@ -1,5 +1,6 @@
 import React from 'react'
 import { styled } from '@mui/material/styles'
+import CountUp from 'react-countup'
 import Button from '@mui/material/Button'
 import { useDispatch } from 'react-redux'
 import {
@@ -18,7 +19,8 @@ type CalcButtonProps = {
 const StyledButton = styled(Button)(({ theme }) => ({
   height: '80px',
   width: '80px',
-  margin: '2px'
+  margin: '2px',
+  fontSize: '30px'
 }))
 
 const CalcButton = (props: CalcButtonProps) => {
@@ -26,10 +28,8 @@ const CalcButton = (props: CalcButtonProps) => {
 
   const handleClick = (value: string) => {
     if (value === 'ac') {
-      // reset
       dispacth(reset())
     } else if (value === '=') {
-      // calc
       dispacth(calc())
     } else if (
       value === '×' ||
@@ -49,7 +49,22 @@ const CalcButton = (props: CalcButtonProps) => {
       disabled={props.disabled}
       onClick={() => handleClick(props.displayString)}
     >
-      {props.displayString}
+      {props.displayString !== 'ac' &&
+      props.displayString !== '+' &&
+      props.displayString !== '-' &&
+      props.displayString !== '×' &&
+      props.displayString !== '÷' &&
+      props.displayString !== '.' &&
+      props.displayString !== '=' ? (
+        <CountUp
+          start={0}
+          end={Number(props.displayString)}
+          duration={Number(props.displayString) / 15}
+          separator=","
+        />
+      ) : (
+        props.displayString
+      )}
     </StyledButton>
   )
 }

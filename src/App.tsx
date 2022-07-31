@@ -13,16 +13,10 @@ const darkTheme = createTheme({
   }
 })
 
-const Wrapper = styled(Grid)(({ theme }) => ({
-  padding: '0 !important',
-  width: 'auto',
-  margin: '0 !important'
-}))
-
 const StyledGrid = styled(Grid)(({ theme }) => ({
   padding: '0 !important',
-  width: 'auto',
-  margin: '0 !important'
+  margin: '0 !important',
+  width: '336px'
 }))
 
 function App() {
@@ -30,11 +24,10 @@ function App() {
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
       <div className="App">
-        <Wrapper container spacing={12}>
+        <StyledGrid container spacing={12}>
           <StyledGrid item xs={12}>
             <CalcDisplay />
           </StyledGrid>
-
           <StyledGrid item xs={12}>
             <CalcButton variant={'outlined'} displayString={'7'} />
             <CalcButton variant={'outlined'} displayString={'8'} />
@@ -60,7 +53,7 @@ function App() {
             <CalcButton variant={'contained'} displayString={'='} />
             <CalcButton variant={'contained'} displayString={'+'} />
           </StyledGrid>
-        </Wrapper>
+        </StyledGrid>
       </div>
     </ThemeProvider>
   )

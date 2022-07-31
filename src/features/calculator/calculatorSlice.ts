@@ -22,19 +22,30 @@ export const calculatorSlice = createSlice({
   name: 'calculator',
   initialState,
   reducers: {
+    /*
+     * 0~9の数字が入力されたとき
+     */
     addNumber: (state, action) => {
+      if (state.displayString === '' && action.payload === '0') {
+        return
+      }
       state.displayString = state.displayString.concat(action.payload)
     },
+
+    /*
+     * 計算記号（×, ÷, +, -）が入力されたとき
+     */
     addCalculationSymbol: (state, action) => {
-      // × と ÷ のときは * と / に変換する
-      if (action.payload === '×') {
-        action.payload = '*'
-      }
-      if (action.payload === '÷') {
-        action.payload = '/'
+      // 何も入力されていないときはアーリーリターン
+      if (state.displayString === '') {
+        return
       }
 
-      // 最後の文字が計算記号の場合は置き換えを行う
+      // × と ÷ のときは * と / に変換する
+      action.payload === '×' && (action.payload = '*')
+      action.payload === '÷' && (action.payload = '/')
+
+      // 最後の文字が計算記号の場合は、置き換えを行う
       const lastString = state.displayString[state.displayString.length - 1]
       if (
         lastString === calculationSymbol.kakeru ||
@@ -48,10 +59,23 @@ export const calculatorSlice = createSlice({
 
       state.displayString = state.displayString.concat(action.payload)
     },
+
+    /*
+     * オールクリア（ AC ）が入力されたとき
+     */
     reset: state => {
       state.displayString = ''
     },
+
+    /*
+     * = が入力されたとき
+     */
     calc: state => {
+      // 何も入力されていないときはアーリーリターン
+      if (state.displayString === '') {
+        return
+      }
+
       // 最後の文字が計算記号の場合はアーリーリターン
       const lastString = state.displayString[state.displayString.length - 1]
       if (
@@ -63,17 +87,6 @@ export const calculatorSlice = createSlice({
         return
       }
 
-      // 最初の文字列が計算記号の場合はその計算記号を削除する
-      const firstString = state.displayString[0]
-      if (
-        firstString === calculationSymbol.kakeru ||
-        firstString === calculationSymbol.waru ||
-        firstString === calculationSymbol.tasu ||
-        firstString === calculationSymbol.hiku ||
-        firstString === '0'
-      ) {
-        state.displayString = state.displayString.slice(1)
-      }
       state.displayString = String(eval(state.displayString))
     }
   }
