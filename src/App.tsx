@@ -34,35 +34,31 @@ function App() {
           <StyledGrid item xs={12}>
             <CalcDisplay />
           </StyledGrid>
-          <StyledGrid item xs={12}>
-            <CalcButton variant={'outlined'} displayString={'ac'} />
-            <CalcButton variant={'outlined'} displayString={'+/-'} />
-            <CalcButton variant={'outlined'} displayString={'%'} />
-            <CalcButton variant={'contained'} displayString={'÷'} />
-          </StyledGrid>
+
           <StyledGrid item xs={12}>
             <CalcButton variant={'outlined'} displayString={'7'} />
             <CalcButton variant={'outlined'} displayString={'8'} />
             <CalcButton variant={'outlined'} displayString={'9'} />
-            <CalcButton variant={'contained'} displayString={'×'} />
+            <CalcButton variant={'contained'} displayString={'÷'} />
           </StyledGrid>
           <StyledGrid item xs={12}>
             <CalcButton variant={'outlined'} displayString={'4'} />
             <CalcButton variant={'outlined'} displayString={'5'} />
             <CalcButton variant={'outlined'} displayString={'6'} />
-            <CalcButton variant={'contained'} displayString={'-'} />
+            <CalcButton variant={'contained'} displayString={'×'} />
           </StyledGrid>
           <StyledGrid item xs={12}>
             <CalcButton variant={'outlined'} displayString={'1'} />
             <CalcButton variant={'outlined'} displayString={'2'} />
             <CalcButton variant={'outlined'} displayString={'3'} />
-            <CalcButton variant={'contained'} displayString={'+'} />
+            <CalcButton variant={'contained'} displayString={'-'} />
           </StyledGrid>
           <StyledGrid item xs={12}>
             <CalcButton variant={'outlined'} displayString={'0'} />
-            <CalcButton variant={'outlined'} disabled displayString={''} />
-            <CalcButton variant={'outlined'} disabled displayString={''} />
+            <CalcButton variant={'outlined'} displayString={'ac'} />
+
             <CalcButton variant={'contained'} displayString={'='} />
+            <CalcButton variant={'contained'} displayString={'+'} />
           </StyledGrid>
         </Wrapper>
       </div>

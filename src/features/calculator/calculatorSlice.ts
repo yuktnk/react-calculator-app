@@ -52,16 +52,27 @@ export const calculatorSlice = createSlice({
       state.displayString = ''
     },
     calc: state => {
+      // 最後の文字が計算記号の場合はアーリーリターン
+      const lastString = state.displayString[state.displayString.length - 1]
+      if (
+        lastString === calculationSymbol.kakeru ||
+        lastString === calculationSymbol.waru ||
+        lastString === calculationSymbol.tasu ||
+        lastString === calculationSymbol.hiku
+      ) {
+        return
+      }
+
       // 最初の文字列が計算記号の場合はその計算記号を削除する
       const firstString = state.displayString[0]
       if (
         firstString === calculationSymbol.kakeru ||
         firstString === calculationSymbol.waru ||
         firstString === calculationSymbol.tasu ||
-        firstString === calculationSymbol.hiku
+        firstString === calculationSymbol.hiku ||
+        firstString === '0'
       ) {
         state.displayString = state.displayString.slice(1)
-        return
       }
       state.displayString = String(eval(state.displayString))
     }
