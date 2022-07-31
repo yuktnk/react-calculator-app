@@ -1,58 +1,63 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import React from 'react'
+import { ThemeProvider, createTheme } from '@mui/material/styles'
+import CssBaseline from '@mui/material/CssBaseline'
+import { styled } from '@mui/material/styles'
+import './App.css'
+import CalcButton from './components/CalcButton'
+import CalcDisplay from './components/CalcDisplay'
+import { Grid } from '@mui/material'
+
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark'
+  }
+})
+
+const StyledGrid = styled(Grid)(({ theme }) => ({
+  padding: '0 !important'
+}))
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
-  );
+    <ThemeProvider theme={darkTheme}>
+      <CssBaseline />
+      <div className="App">
+        {/* <CalcDisplay /> */}
+        <StyledGrid container spacing={12}>
+          <StyledGrid item xs={12}>
+            <CalcButton variant={'outlined'} displayString={'ac'} />
+            <CalcButton variant={'outlined'} displayString={'+/-'} />
+            <CalcButton variant={'outlined'} displayString={'%'} />
+            <CalcButton variant={'contained'} displayString={'÷'} />
+          </StyledGrid>
+          <StyledGrid item xs={12}>
+            <CalcButton variant={'outlined'} displayString={'7'} />
+            <CalcButton variant={'outlined'} displayString={'8'} />
+            <CalcButton variant={'outlined'} displayString={'9'} />
+            <CalcButton variant={'contained'} displayString={'×'} />
+          </StyledGrid>
+          <StyledGrid item xs={12}>
+            <CalcButton variant={'outlined'} displayString={'4'} />
+            <CalcButton variant={'outlined'} displayString={'5'} />
+            <CalcButton variant={'outlined'} displayString={'6'} />
+            <CalcButton variant={'contained'} displayString={'-'} />
+          </StyledGrid>
+          <StyledGrid item xs={12}>
+            <CalcButton variant={'outlined'} displayString={'1'} />
+            <CalcButton variant={'outlined'} displayString={'2'} />
+            <CalcButton variant={'outlined'} displayString={'3'} />
+            <CalcButton variant={'contained'} displayString={'+'} />
+          </StyledGrid>
+          <StyledGrid item xs={12}>
+            <CalcButton variant={'outlined'} displayString={'0'} />
+            <CalcButton variant={'outlined'} disabled displayString={''} />
+            <CalcButton variant={'outlined'} disabled displayString={''} />
+            <CalcButton variant={'contained'} displayString={'='} />
+          </StyledGrid>
+        </StyledGrid>
+      </div>
+    </ThemeProvider>
+  )
 }
 
-export default App;
+export default App
