@@ -12,8 +12,16 @@ import {
 
 type CalcButtonProps = {
   displayString: string
-  variant: 'text' | 'outlined' | 'contained' | undefined
+  variant: 'text' | 'outlined' | 'contained'
   disabled?: boolean | undefined
+  color?:
+    | 'inherit'
+    | 'secondary'
+    | 'primary'
+    | 'success'
+    | 'error'
+    | 'info'
+    | 'warning'
 }
 
 const StyledButton = styled(Button)(({ theme }) => ({
@@ -45,6 +53,7 @@ const CalcButton = (props: CalcButtonProps) => {
 
   return (
     <StyledButton
+      color={props.color}
       variant={props.variant}
       disabled={props.disabled}
       onClick={() => handleClick(props.displayString)}

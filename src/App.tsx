@@ -48,9 +48,17 @@ function App() {
           </StyledGrid>
           <StyledGrid item xs={12}>
             <CalcButton variant={'outlined'} displayString={'0'} />
-            <CalcButton variant={'outlined'} displayString={'ac'} />
+            <CalcButton
+              variant={'outlined'}
+              displayString={'ac'}
+              color="warning"
+            />
 
-            <CalcButton variant={'contained'} displayString={'='} />
+            <CalcButton
+              variant={'contained'}
+              displayString={'='}
+              color="success"
+            />
             <CalcButton variant={'contained'} displayString={'+'} />
           </StyledGrid>
         </StyledGrid>

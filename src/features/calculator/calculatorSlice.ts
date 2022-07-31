@@ -7,7 +7,7 @@ export interface CalculatorState {
 }
 
 const initialState: CalculatorState = {
-  displayString: '',
+  displayString: '0',
   status: 'idle'
 }
 
@@ -26,9 +26,14 @@ export const calculatorSlice = createSlice({
      * 0~9の数字が入力されたとき
      */
     addNumber: (state, action) => {
-      if (state.displayString === '' && action.payload === '0') {
+      if (state.displayString === '0' && action.payload === '0') {
         return
       }
+
+      if (state.displayString === '0') {
+        state.displayString = ''
+      }
+
       state.displayString = state.displayString.concat(action.payload)
     },
 
@@ -37,7 +42,7 @@ export const calculatorSlice = createSlice({
      */
     addCalculationSymbol: (state, action) => {
       // 何も入力されていないときはアーリーリターン
-      if (state.displayString === '') {
+      if (state.displayString === '0') {
         return
       }
 
@@ -64,7 +69,7 @@ export const calculatorSlice = createSlice({
      * オールクリア（ AC ）が入力されたとき
      */
     reset: state => {
-      state.displayString = ''
+      state.displayString = '0'
     },
 
     /*
@@ -72,7 +77,7 @@ export const calculatorSlice = createSlice({
      */
     calc: state => {
       // 何も入力されていないときはアーリーリターン
-      if (state.displayString === '') {
+      if (state.displayString === '0') {
         return
       }
 
