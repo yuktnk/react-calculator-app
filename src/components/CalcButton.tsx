@@ -13,14 +13,7 @@ type CalcButtonProps = {
   displayString: string
   variant?: 'text' | 'outlined' | 'contained'
   disabled?: boolean | undefined
-  color?:
-    | 'inherit'
-    | 'secondary'
-    | 'primary'
-    | 'success'
-    | 'error'
-    | 'info'
-    | 'warning'
+  color?: 'inherit' | 'secondary' | 'primary' | 'success' | 'error' | 'info' | 'warning'
 }
 
 const StyledButton = styled(Button)(({ theme }) => ({
@@ -30,12 +23,7 @@ const StyledButton = styled(Button)(({ theme }) => ({
   fontSize: '30px',
 }))
 
-const CalcButton = ({
-  color,
-  variant = 'outlined',
-  disabled,
-  displayString,
-}: CalcButtonProps) => {
+const CalcButton = ({ color, variant = 'outlined', disabled, displayString }: CalcButtonProps) => {
   const dispacth = useDispatch()
 
   const handleClick = (value: string) => {
@@ -43,12 +31,7 @@ const CalcButton = ({
       dispacth(reset())
     } else if (value === '=') {
       dispacth(calc())
-    } else if (
-      value === '×' ||
-      value === '÷' ||
-      value === '+' ||
-      value === '-'
-    ) {
+    } else if (value === '×' || value === '÷' || value === '+' || value === '-') {
       dispacth(addCalculationSymbol(value))
     } else {
       dispacth(addNumber(value))

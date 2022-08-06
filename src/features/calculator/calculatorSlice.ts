@@ -31,6 +31,7 @@ export const calculatorSlice = createSlice({
      * 0~9の数字が入力されたとき
      */
     addNumber: (state, action) => {
+      // 初期値０のときに入力された値が0のときはアーリーリターン
       if (state.displayString === '0' && action.payload === '0') {
         return
       }
@@ -54,8 +55,7 @@ export const calculatorSlice = createSlice({
       // × と ÷ のときは * と / に変換する
       action.payload === calculationSymbol.kakeru &&
         (action.payload = formatedCalculationSymbol.kakeru)
-      action.payload === calculationSymbol.waru &&
-        (action.payload = formatedCalculationSymbol.waru)
+      action.payload === calculationSymbol.waru && (action.payload = formatedCalculationSymbol.waru)
 
       // 最後の文字が計算記号の場合は、置き換えを行う
       const lastString = state.displayString[state.displayString.length - 1]
@@ -99,15 +99,14 @@ export const calculatorSlice = createSlice({
         return
       }
 
+      // 計算を実行し、stateを更新
       state.displayString = String(eval(state.displayString))
     },
   },
 })
 
-export const { addNumber, addCalculationSymbol, reset, calc } =
-  calculatorSlice.actions
+export const { addNumber, addCalculationSymbol, reset, calc } = calculatorSlice.actions
 
-export const selectDisplayString = (state: RootState) =>
-  state.calculator.displayString
+export const selectDisplayString = (state: RootState) => state.calculator.displayString
 
 export default calculatorSlice.reducer

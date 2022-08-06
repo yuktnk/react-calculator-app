@@ -14,7 +14,7 @@ const StyledBox = styled(Box)(({ theme }) => ({
   fontSize: '24px',
   textAlign: 'right',
   padding: '8px',
-  overflow: 'scroll'
+  overflow: 'scroll',
 }))
 
 const StyledTypography = styled(Typography)(({ theme }) => ({
@@ -22,7 +22,7 @@ const StyledTypography = styled(Typography)(({ theme }) => ({
   width: '100%',
   color: '#90caf9',
   fontSize: '40px',
-  textAlign: 'right'
+  textAlign: 'right',
 }))
 
 const CalcDisplay = () => {
