@@ -9,14 +9,14 @@ import { Grid } from '@mui/material'
 
 const darkTheme = createTheme({
   palette: {
-    mode: 'dark'
-  }
+    mode: 'dark',
+  },
 })
 
 const StyledGrid = styled(Grid)(({ theme }) => ({
   padding: '0 !important',
   margin: '0 !important',
-  width: '336px'
+  width: '336px',
 }))
 
 function App() {
