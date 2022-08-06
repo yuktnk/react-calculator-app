@@ -7,12 +7,12 @@ import {
   addNumber,
   addCalculationSymbol,
   reset,
-  calc
+  calc,
 } from '../features/calculator/calculatorSlice'
 
 type CalcButtonProps = {
   displayString: string
-  variant: 'text' | 'outlined' | 'contained'
+  variant?: 'text' | 'outlined' | 'contained'
   disabled?: boolean | undefined
   color?:
     | 'inherit'
@@ -28,10 +28,15 @@ const StyledButton = styled(Button)(({ theme }) => ({
   height: '80px',
   width: '80px',
   margin: '2px',
-  fontSize: '30px'
+  fontSize: '30px',
 }))
 
-const CalcButton = (props: CalcButtonProps) => {
+const CalcButton = ({
+  color,
+  variant = 'outlined',
+  disabled,
+  displayString,
+}: CalcButtonProps) => {
   const dispacth = useDispatch()
 
   const handleClick = (value: string) => {
@@ -53,26 +58,26 @@ const CalcButton = (props: CalcButtonProps) => {
 
   return (
     <StyledButton
-      color={props.color}
-      variant={props.variant}
-      disabled={props.disabled}
-      onClick={() => handleClick(props.displayString)}
+      color={color}
+      variant={variant}
+      disabled={disabled}
+      onClick={() => handleClick(displayString)}
     >
-      {props.displayString !== 'ac' &&
-      props.displayString !== '+' &&
-      props.displayString !== '-' &&
-      props.displayString !== '×' &&
-      props.displayString !== '÷' &&
-      props.displayString !== '.' &&
-      props.displayString !== '=' ? (
+      {displayString !== 'ac' &&
+      displayString !== '+' &&
+      displayString !== '-' &&
+      displayString !== '×' &&
+      displayString !== '÷' &&
+      displayString !== '.' &&
+      displayString !== '=' ? (
         <CountUp
           start={0}
-          end={Number(props.displayString)}
-          duration={Number(props.displayString) / 15}
+          end={Number(displayString)}
+          duration={Number(displayString) / 15}
           separator=","
         />
       ) : (
-        props.displayString
+        displayString
       )}
     </StyledButton>
   )

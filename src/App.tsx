@@ -29,34 +29,30 @@ function App() {
             <CalcDisplay />
           </StyledGrid>
           <StyledGrid item xs={12}>
-            <CalcButton variant={'outlined'} displayString={'7'} />
-            <CalcButton variant={'outlined'} displayString={'8'} />
-            <CalcButton variant={'outlined'} displayString={'9'} />
-            <CalcButton variant={'contained'} displayString={'÷'} />
+            <CalcButton displayString={'7'} />
+            <CalcButton displayString={'8'} />
+            <CalcButton displayString={'9'} />
+            <CalcButton displayString={'÷'} variant={'contained'} />
           </StyledGrid>
           <StyledGrid item xs={12}>
-            <CalcButton variant={'outlined'} displayString={'4'} />
-            <CalcButton variant={'outlined'} displayString={'5'} />
-            <CalcButton variant={'outlined'} displayString={'6'} />
-            <CalcButton variant={'contained'} displayString={'×'} />
+            <CalcButton displayString={'4'} />
+            <CalcButton displayString={'5'} />
+            <CalcButton displayString={'6'} />
+            <CalcButton displayString={'×'} variant={'contained'} />
           </StyledGrid>
           <StyledGrid item xs={12}>
-            <CalcButton variant={'outlined'} displayString={'1'} />
-            <CalcButton variant={'outlined'} displayString={'2'} />
-            <CalcButton variant={'outlined'} displayString={'3'} />
-            <CalcButton variant={'contained'} displayString={'-'} />
+            <CalcButton displayString={'1'} />
+            <CalcButton displayString={'2'} />
+            <CalcButton displayString={'3'} />
+            <CalcButton displayString={'-'} variant={'contained'} />
           </StyledGrid>
           <StyledGrid item xs={12}>
-            <CalcButton variant={'outlined'} displayString={'0'} />
-            <CalcButton
-              variant={'outlined'}
-              displayString={'ac'}
-              color="warning"
-            />
+            <CalcButton displayString={'0'} />
+            <CalcButton displayString={'ac'} color="warning" />
 
             <CalcButton
-              variant={'contained'}
               displayString={'='}
+              variant={'contained'}
               color="success"
             />
             <CalcButton variant={'contained'} displayString={'+'} />
