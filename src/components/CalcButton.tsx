@@ -1,6 +1,5 @@
 import React from 'react'
 import { styled } from '@mui/material/styles'
-import CountUp from 'react-countup'
 import Button from '@mui/material/Button'
 import { useDispatch } from 'react-redux'
 import {
@@ -63,22 +62,7 @@ const CalcButton = ({
       disabled={disabled}
       onClick={() => handleClick(displayString)}
     >
-      {displayString !== 'ac' &&
-      displayString !== '+' &&
-      displayString !== '-' &&
-      displayString !== '×' &&
-      displayString !== '÷' &&
-      displayString !== '.' &&
-      displayString !== '=' ? (
-        <CountUp
-          start={0}
-          end={Number(displayString)}
-          duration={Number(displayString) / 15}
-          separator=","
-        />
-      ) : (
-        displayString
-      )}
+      {displayString}
     </StyledButton>
   )
 }
