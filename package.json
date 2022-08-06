@@ -2,6 +2,7 @@
   "name": "react-calculator-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://yuktnk.github.io/react-calculator-app/",
   "dependencies": {
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
@@ -26,7 +27,11 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "format": "prettier --write 'src/**/*.ts' 'src/**/*.tsx'"
+    "format": "prettier --write 'src/**/*.ts' 'src/**/*.tsx'",
+    "rm": "rm -rf docs",
+    "mv": "mv build docs",
+    "git": "git add . && git commit && git push origin master",
+    "deploy": "npm run rm && npm run build && npm run mv && npm run git"
   },
   "eslintConfig": {
     "extends": [
